@@ -19,10 +19,9 @@ namespace lab11
         public Form1()
         {
             basic = new QuadCollection<IShape>();
-            shapes = new BindingList<IShape>();
+            shapes = new BindingList<IShape>(basic);
             InitializeComponent();
             Shapes_list.DataSource = shapes;
-            Shapes_list.DisplayMember = "Name";
         }
 
         private void Add_Quadrilateral_btn_Click(object sender, EventArgs e)
