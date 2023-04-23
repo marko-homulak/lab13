@@ -89,10 +89,10 @@ namespace lab11
 
         private void Delete_btn_Click(object sender, EventArgs e)
         {
-            if (Shapes_list.SelectedItem != null)
-            {
-                shapes.Remove((IShape)Shapes_list.SelectedItem);
-            }
+            //if (Shapes_list.SelectedItem != null)
+            //{
+            //    shapes.Remove((IShape)Shapes_list.SelectedItem);
+            //}
         }
 
         private void Add_Clone_btn_Click(object sender, EventArgs e)
