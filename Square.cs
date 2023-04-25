@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace lab11
 {
-    class Square : Rectangle
+    class Square : Quadrilateral
     {
-        public override string Name => "Square";
+        public override string name => "Square";
+
+        public Square() { }
+
+        public Square(double side1)
+        {
+            this.side1 = side1;
+        }
 
         public override double CalculateArea()
         {
-            return Side1 * Side1;
+            return side1 * side1;
         }
 
         public override string ToString()
         {
-            return $"{Name} (side: {Side1}; area: {CalculateArea()})";
+            return $"{name} (side: {side1}; area: {CalculateArea()})";
         }
     }
 }

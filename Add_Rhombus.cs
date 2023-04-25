@@ -13,14 +13,14 @@ namespace lab11
 {
     public partial class Add_Rhombus : Form
     {
+
         private BindingList<IShape> shapes;
+
         public Add_Rhombus(BindingList<IShape> shapes)
         {
             this.shapes = shapes;
             InitializeComponent();
         }
-
-        Shape shape;
 
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
@@ -29,16 +29,18 @@ namespace lab11
 
         private void Get_Area_btn_Click(object sender, EventArgs e)
         {
+            Shape shape;
+
             try
             {
-                double diagonal1, diagonal2;
-
                 if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
                 {
                     throw new Exception("Please fill in all fields.");
                 }
                 else
                 {
+                    double diagonal1, diagonal2;
+
                     if (!double.TryParse(textBox1.Text, out diagonal1) || diagonal1 <= 0)
                     {
                         throw new ArgumentException("Diagonal1 must be a positive number.");
@@ -48,27 +50,22 @@ namespace lab11
                     {
                         throw new ArgumentException("Diagonal2 must be a positive number.");
                     }
+
+                    if (diagonal1 == diagonal2)
+                    {
+                        double side1 = diagonal1 / Math.Sqrt(2);
+
+                        shape = new Square(side1);
+                    }
+                    else
+                    {
+                        shape = new Rhombus(diagonal1, diagonal2);
+                    }
                 }
 
-                if (diagonal1 == diagonal2)
-                {
-                    shape = new Square()
-                    {
-                        Side1 = diagonal1 / Math.Sqrt(2)
-                    };
-                }
-                else
-                {
-                    shape = new Rhombus()
-                    {
-                        Diagonal1 = diagonal1,
-                        Diagonal2 = diagonal2
-                    };
-                }
-                              
                 shapes.Add(shape);
 
-                MessageBox.Show("Area of the " + shape.Name + " = " + shape.CalculateArea());
+                MessageBox.Show("Shape: " + shape.name + " successfully added");
 
                 this.Close();
             }

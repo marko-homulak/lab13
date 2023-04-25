@@ -8,25 +8,36 @@ namespace lab11
 {
     class Quadrilateral : Shape
     {
-        public override string Name => "Quadrilateral";
+        public override string name => "Quadrilateral";
 
-        public double Side1 { get; set; }
-        public double Side2 { get; set; }
-        public double Side3 { get; set; }
-        public double Side4 { get; set; }
-        public double Diagonal1 { get; set; }
-        public double Diagonal2 { get; set; }
-        public double angleBetweenDiagonals { get; set; }
+        protected double side1;
+
+        protected double side2;
+
+        protected double diagonal1;
+
+        protected double diagonal2;
+
+        protected double angleBetweenDiagonals;
+
+        public Quadrilateral() { }
+
+        public Quadrilateral(double diagonal1, double diagonal2, double angleBetweenDiagonals)
+        {
+            this.diagonal1 = diagonal1;
+            this.diagonal2 = diagonal2;
+            this.angleBetweenDiagonals = angleBetweenDiagonals;
+        }
 
         public override double CalculateArea()
         {
             double alpha = angleBetweenDiagonals * Math.PI / 180;
-            return 0.5 * Diagonal1 * Diagonal2 * Math.Sin(alpha);
+            return 0.5 * diagonal1 * diagonal2 * Math.Sin(alpha);
         }
 
         public override string ToString()
         {
-            return $"{Name} (diagonal1: {Diagonal1}, diagonal2: {Diagonal2}, alpha: {angleBetweenDiagonals}; area: {CalculateArea()})";
+            return $"{name} (diagonal1: {diagonal1}, diagonal2: {diagonal2}, alpha: {angleBetweenDiagonals}; area: {CalculateArea()})";
         }
     }
 }

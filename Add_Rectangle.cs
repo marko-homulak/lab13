@@ -13,14 +13,14 @@ namespace lab11
 {
     public partial class Add_Rectangle : Form
     {
+
         private BindingList<IShape> shapes;
+
         public Add_Rectangle(BindingList<IShape> shapes)
         {
             this.shapes = shapes;
             InitializeComponent();
         }
-
-        Shape shape;
 
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
@@ -29,16 +29,18 @@ namespace lab11
 
         private void Get_Area_btn_Click(object sender, EventArgs e)
         {
+            Shape shape;
+
             try
             {
-                double side1, side2;
-
                 if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
                 {
                     throw new Exception("Please fill in all fields.");
                 }
                 else
                 {
+                    double side1, side2;
+
                     if (!double.TryParse(textBox1.Text, out side1) || side1 <= 0)
                     {
                         throw new ArgumentException("Side1 must be a positive number.");
@@ -48,27 +50,20 @@ namespace lab11
                     {
                         throw new ArgumentException("Side2 must be a positive number.");
                     }
-                }
-                
-                if (side1 == side2)
-                {
-                    shape = new Square()
+
+                    if (side1 == side2)
                     {
-                        Side1 = side1
-                    };
-                }
-                else
-                {
-                    shape = new Rectangle()
+                        shape = new Square(side1);
+                    }
+                    else
                     {
-                        Side1 = side1,
-                        Side2 = side2
-                    };
+                        shape = new Rectangle(side1, side2);
+                    }
                 }
-              
+
                 shapes.Add(shape);
 
-                MessageBox.Show("Area of the " + shape.Name + " = " + shape.CalculateArea());
+                MessageBox.Show("Shape: " + shape.name + " successfully added");
 
                 this.Close();
             }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace lab11
 {
-    public abstract class Shape : IShape 
+    public abstract class Shape : IShape
     {
-        public virtual string Name => "Shape";
+        public virtual string name => "Shape";
 
         public abstract double CalculateArea();
 
         public override string ToString()
         {
-            return $"{Name}";
+            return $"{name}";
         }
 
         public object Clone()
@@ -24,7 +24,7 @@ namespace lab11
 
         public int CompareTo(IShape other)
         {
-            return Name.CompareTo(other.Name);
+            return name.CompareTo(other.name);
         }
     }
 }

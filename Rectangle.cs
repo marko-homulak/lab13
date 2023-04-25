@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace lab11
 {
-    class Rectangle : Parallelogram
+    class Rectangle : Quadrilateral
     {
-        public override string Name => "Rectangle";
+        public override string name => "Rectangle";
+
+        public Rectangle() { }
+
+        public Rectangle(double side1, double side2)
+        {
+            this.side1 = side1;
+            this.side2 = side2;
+        }
 
         public override double CalculateArea()
         {
-            return Side1 * Side2;
+            return side1 * side2;
         }
 
         public override string ToString()
         {
-            return $"{Name} (side: {Side1}, {Side2}; area: {CalculateArea()})";
+            return $"{name} (side: {side1}, {side2}; area: {CalculateArea()})";
         }
     }
 }

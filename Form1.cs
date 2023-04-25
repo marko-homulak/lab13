@@ -99,10 +99,15 @@ namespace lab11
 
         private void Add_Clone_btn_Click(object sender, EventArgs e)
         {
-            int storageCountForMomentOfEntering = shapes.Count;
-            for (int i = 0; i < storageCountForMomentOfEntering; i++)
+            int selectedIndex = Shapes_list.SelectedIndex;
+            List<IShape> clones = new List<IShape>();
+            foreach (IShape shape in shapes)
             {
-                shapes.Add((IShape)shapes[i].Clone());
+                clones.Add((IShape)shape.Clone());
+            }
+            foreach (IShape clone in clones)
+            {
+                shapes.Add(clone);
             }
         }
        

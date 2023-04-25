@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace lab11
 {
-    class Rhombus : Parallelogram
+    class Rhombus : Quadrilateral
     {
-        public override string Name => "Rhombus";
+        public override string name => "Rhombus";
+
+        public Rhombus() { }
+
+        public Rhombus(double diagonal1, double diagonal2)
+        {
+            this.diagonal1 = diagonal1;
+            this.diagonal2 = diagonal2;
+        }
 
         public override double CalculateArea()
         {
-            return 0.5 * Diagonal1 * Diagonal2;
+            return 0.5 * diagonal1 * diagonal2;
         }
 
         public override string ToString()
         {
-            return $"{Name} (diagonal1: {Diagonal1}, diagonal2: {Diagonal2}; area: {CalculateArea()})";
+            return $"{name} (diagonal1: {diagonal1}, diagonal2: {diagonal2}; area: {CalculateArea()})";
         }
     }
 }

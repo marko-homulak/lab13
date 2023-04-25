@@ -14,14 +14,14 @@ namespace lab11
 {
     public partial class Add_Square : Form
     {
+
         private BindingList<IShape> shapes;
+
         public Add_Square(BindingList<IShape> shapes)
         {
             this.shapes = shapes;
             InitializeComponent();
         }
-
-        Shape shape;
 
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
@@ -30,30 +30,29 @@ namespace lab11
 
         private void Get_Area_btn_Click(object sender, EventArgs e)
         {
+            Shape shape;
+
             try
             {
-                double side1;
-
                 if (string.IsNullOrEmpty(textBox1.Text))
                 {
                     throw new Exception("Please fill in all fields.");
                 }
                 else
                 {
+                    double side1;
+
                     if (!double.TryParse(textBox1.Text, out side1) || side1 <= 0)
                     {
                         throw new ArgumentException("Side1 must be a positive number.");
                     }
+
+                    shape = new Square(side1);
                 }
-                
-                shape = new Square()
-                {
-                    Side1 = double.Parse(textBox1.Text)
-                };
 
                 shapes.Add(shape);
 
-                MessageBox.Show("Area of the " + shape.Name + " = " + shape.CalculateArea());
+                MessageBox.Show("Shape: " + shape.name + " successfully added");
 
                 this.Close();
             }

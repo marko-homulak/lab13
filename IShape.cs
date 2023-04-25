@@ -8,7 +8,7 @@ namespace lab11
 {
     public interface IShape : ICloneable, IComparable<IShape>
     {
-        string Name { get; }
+        string name { get; }
         double CalculateArea();
     }
 }
